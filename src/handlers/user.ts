@@ -28,4 +28,8 @@ import { comparePasswords, createJWT, hashPassword } from '../modules/auth';
             messages: 'Nope'
         });
     }
+
+    res.json({
+        message: 'Great'
+    })
  }
