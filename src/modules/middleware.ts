@@ -1,4 +1,4 @@
-import { body, validationResult } from "express-validator"
+import { body, oneOf, validationResult } from "express-validator"
 
 export const handleInputErrors = (req, res, next) => {
     const errors = validationResult(req);
@@ -13,6 +13,22 @@ export const handleInputErrors = (req, res, next) => {
 
 export const validateProduct = [
     body('name').isString(),
-    body('belongsToId').isString(),
-    body('updates').isString(),
+];
+
+export const validateUpdate = [
+    body('title').optional().isString(),
+    body('body').optional().isString(),
+    body('status').isIn(['IN_PROGRESS', 'SHIPPED', 'DEPRECATED']),
+    body('version').optional().isString(),
+];
+
+export const validateUpdatePoint = [
+    body('name').optional().isString(),
+    body('description').optional().isString(),
+];
+
+export const validateCreateUpdatePoint = [
+    body('name').isString(),
+    body('description').isString(),
+    body('updateId').exists().isString(),
 ];
