@@ -1,4 +1,6 @@
 import {Router} from 'express'
+import {body, validationResult} from 'express-validator';
+import { handleInputErrors, validateProduct } from './modules/middleware';
 
 const router = Router();
 
@@ -7,8 +9,12 @@ router.get('/product', (req, res) => {
     res.json({message: req.shhhh_secret});
 });
 router.get('/product/:id', (req, res) => {});
-router.put('/product/:id', (req, res) => {});
-router.post('/product', (req, res) => {});
+router.put('/product/:id', validateProduct, handleInputErrors, (req, res) => {
+    res.json({message: 'Ok'})
+});
+router.post('/product', (req, res) => {
+
+});
 router.delete('/product/:id', (req, res) => {});
 
 // Update
