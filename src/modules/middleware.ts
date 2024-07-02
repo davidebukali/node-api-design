@@ -18,7 +18,7 @@ export const validateProduct = [
 export const validateUpdate = [
     body('title').optional().isString(),
     body('body').optional().isString(),
-    body('status').isIn(['IN_PROGRESS', 'SHIPPED', 'DEPRECATED']),
+    body('status').isIn(['IN_PROGRESS', 'SHIPPED', 'DEPRECATED']).optional(),
     body('version').optional().isString(),
 ];
 
