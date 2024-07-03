@@ -37,14 +37,18 @@ export const createUpdate = async (req, res) => {
         }
     })
 
-    if (product) {
+    if (!product) {
         return res.json({
             message: 'nope'
         })
     }
 
     const update = await prisma.update.create({
-        data: req.body
+        data: {
+            title: req.body.title,
+            body: req.body.body,
+            product: {connect: {id: product.id}}
+        }
     })
 
     res.json({
