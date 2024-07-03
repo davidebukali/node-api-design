@@ -30,6 +30,7 @@ import { comparePasswords, createJWT, hashPassword } from '../modules/auth';
     }
 
     res.json({
-        message: 'Great'
+        message: 'Great',
+        token: createJWT(user)
     })
  }
