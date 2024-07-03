@@ -22,6 +22,12 @@ export const validateUpdate = [
     body('version').optional().isString(),
 ];
 
+export const validateCreateUpdate = [
+    body('title').exists().isString(),
+    body('body').exists().isString(),
+    body('productId').exists().isString(),
+];
+
 export const validateUpdatePoint = [
     body('name').optional().isString(),
     body('description').optional().isString(),

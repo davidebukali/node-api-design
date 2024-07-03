@@ -1,6 +1,6 @@
 import {Router} from 'express'
 import {body, validationResult} from 'express-validator';
-import { handleInputErrors, validateCreateUpdatePoint, validateProduct, validateUpdate, validateUpdatePoint } from './modules/middleware';
+import { handleInputErrors, validateCreateUpdate, validateCreateUpdatePoint, validateProduct, validateUpdate, validateUpdatePoint } from './modules/middleware';
 import { createProduct, deleteProduct, getOneProduct, getProducts, updateProduct } from './handlers/product';
 import { createUpdate, deleteIt, getOneUpdate, getUpdates, updateIt } from './handlers/update';
 
@@ -17,7 +17,7 @@ router.delete('/product/:id', deleteProduct);
 router.get('/update', getUpdates);
 router.get('/update/:id', getOneUpdate);
 router.put('/update/:id', validateUpdate, updateIt);
-router.post('/update', createUpdate);
+router.post('/update', validateCreateUpdate, handleInputErrors, createUpdate);
 router.delete('/update/:id', deleteIt);
 
 // Update point
