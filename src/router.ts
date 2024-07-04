@@ -27,4 +27,10 @@ router.put('/updatepoint/:id', validateUpdatePoint, (req, res) => {});
 router.post('/updatepoint', validateCreateUpdatePoint, (req, res) => {});
 router.delete('/updatepoint/:id', (req, res) => {});
 
+router.use((err, req, res, next) => {
+    res.status(500).json({
+        message: 'Oops'
+    })
+})
+
 export default router;

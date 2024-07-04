@@ -30,4 +30,24 @@ app.use('/api', protect, router);
 app.post('/user', createNewUser);
 app.post('/signin', signin);
 
+//Error handling, add error logging here
+//Catches errors through by app handlers
+app.use((err, req, res, next) => {
+    if (err.type === 'auth') {
+        res.status(401).json({
+            message: 'Unauthorised'
+        })
+    } else if (err.type === 'input') {
+        res.status(400).json({
+            message: 'Invalid input'
+        })
+    } else {
+        res.status(500).json({
+            message: 'Oops'
+        })
+    }
+})
+//Asyncronous errors handled in respective handlers,
+//you add next and send error through there in a try/catch block
+
 export default app;
