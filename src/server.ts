@@ -18,7 +18,6 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-    console.log('Hello from express');
     res.status(200);
     res.json({
         message: 'hello'
